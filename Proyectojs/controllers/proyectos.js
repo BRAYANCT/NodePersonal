@@ -1,8 +1,9 @@
 var Proyectos=require('../models/proyectos');
 var fs=require('fs');
-
+var path =require ('path');
 const { param } = require('../router/proyectos');
 const proyectos = require('../models/proyectos');
+const { exists } = require('../models/proyectos');
 
 var controller={
     home:function (req,res) {  
@@ -135,6 +136,20 @@ var controller={
 
             });
         }
+    },
+    getImagenFile:function (req,res) {  
+        
+        var file=req.param.imagen;
+        var path='./uploads/'+file;
+        fs.exists(path,(exists)=>{
+            if(exists){
+                return res.sendFile(path.resolve(path.file));
+            }else{
+                return res.status(200).send({
+                    message:"No existe la Imagen..."
+                });
+            }
+        });
     }
 
 

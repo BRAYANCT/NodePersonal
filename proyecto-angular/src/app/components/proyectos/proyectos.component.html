@@ -1,0 +1,12 @@
+<div class="container">
+    
+    <h2>Proyectos</h2>
+    <ul>
+        <li *ngFor="let proyecto of proyectos">
+            <img src="{{url+'getimagen/'+proyectos.imagen}}" *ngIf="proyectos.imagen">
+            <h3>{{proyecto.nombre}}</h3>
+            <p>{{proyecto.categoria}}</p>
+        </li>
+    </ul>
+
+</div>
